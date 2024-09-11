@@ -123,7 +123,7 @@ function App() {
         formData.append('file', file);
     
         try {
-          const response = await axios.post('http://localhost:3001/upload', formData, {
+          const response = await axios.post('https://spreadsheet-to-json-converter.vercel.app/', formData, {
             headers: {
               'Content-Type': 'multipart/form-data'
             }
@@ -151,7 +151,7 @@ function App() {
   const handleSaveSelected = async () => {
     try {
       const selectedData = selectedRows.map(rowIndex => data[rowIndex]);
-      await axios.post('http://localhost:3001/save', { data: selectedData });
+      await axios.post('https://spreadsheet-to-json-converter.vercel.app/save', { data: selectedData });
       alert('Selected data saved successfully.');
     } catch (error) {
       console.error('Error saving data:', error);
